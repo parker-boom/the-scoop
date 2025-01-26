@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "title": "Cal Poly's Organic Farm",
+      "summary": "Nestled in front of Cal Poly's dairy center, the 8-acre organic farm provides hands-on learning experiences for students who manage everything from planting to selling the crops.",
+      "interests": "Lifestyle",
+      "journalist": "Kennedy Ray",
+      "image": "article4.jpg",
+      "link": "https://mustangnews.net/growing-together-meet-the-team-behind-cal-polys-organic-farm/",
+      "group": "Mustang News"
+    },
+    {
+      "title": "Restructuring of DEI",
+      "image": "article10.png",
+      "group": "Campus Announcement"
+    },
+    {
+      "title": "Battery plant safety bill",
+      "image": "article11.png",
+      "group": "SLO Tribune"
+    }
+  ]
+}

@@ -18,8 +18,8 @@ export const LogoContainer = styled.div`
   margin-top: 8px;
 
   img {
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 50px;
   }
 `;
 

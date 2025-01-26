@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import options from "./options.json";
-import logo from "../Assets/logo512.png";
+import logo from "../Assets/theScoop.png";
 import {
   Container,
   Message,
@@ -8,7 +8,6 @@ import {
   SectionHeader,
   SectionContent,
   ButtonGrid,
-  SelectButton,
   InputGroup,
   Input,
   StartButton,
@@ -18,8 +17,8 @@ import {
   InterestButton,
   PublisherButton,
 } from "./onboarding.styles";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { Chevron } from "./onboarding.styles";
+import { usePreferences } from "../Shared/PreferencesContext";
 
 function Onboarding({ onComplete }) {
   const [activeSection, setActiveSection] = useState("personal");
@@ -29,12 +28,13 @@ function Onboarding({ onComplete }) {
     interests: [],
     publishers: [],
   });
+  const { updatePreferences } = usePreferences();
 
   const sections = [
     {
       id: "personal",
       title: "👤 Personal Info",
-      message: "Welcome to NAME! Let's get to know you better.",
+      message: "Welcome to Scoop! Let's get to know you better.",
     },
     {
       id: "style",
@@ -98,6 +98,18 @@ function Onboarding({ onComplete }) {
       interests.length > 0 &&
       publishers.length > 0
     );
+  };
+
+  const handleComplete = () => {
+    // Save all the preferences
+    updatePreferences({
+      interests: selections.interests,
+      readingTime: 5, // Assuming a default readingTime
+      newsStyle: selections.style[0],
+      // Add other preferences
+    });
+
+    onComplete();
   };
 
   const renderContent = (section) => {
@@ -178,10 +190,7 @@ function Onboarding({ onComplete }) {
         </Section>
       ))}
 
-      <StartButton
-        $isEnabled={isComplete()}
-        onClick={() => isComplete() && onComplete()}
-      >
+      <StartButton $isEnabled={isComplete()} onClick={handleComplete}>
         Get Started
       </StartButton>
     </Container>

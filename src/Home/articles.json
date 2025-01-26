@@ -1,0 +1,54 @@
+{
+  "General": [
+    {
+      "title": "Cal Poly's Organic Farm",
+      "image": "article4.jpg",
+      "publisher": "MustangNews"
+    },
+    {
+      "title": "Bernardo Silva new coach",
+      "image": "article5.png",
+      "publisher": "MustangNews"
+    },
+    {
+      "title": "Parking program delayed",
+      "image": "article1.png",
+      "publisher": "MustangNews"
+    },
+    {
+      "title": "Wildfire donation drive",
+      "image": "article2.png",
+      "publisher": "MustangNews"
+    },
+    {
+      "title": "Battery plant safety bill",
+      "image": "article3.jpg",
+      "publisher": "MustangNews"
+    }
+  ],
+  "Events": [
+    {
+      "title": "Winter Club Fair",
+      "image": "article6.png",
+      "publisher": "ASI"
+    },
+    {
+      "title": "Smile and Nod Winter Show",
+      "image": "article7.png",
+      "publisher": "MustangNews"
+    }
+  ],
+  "Lifestyle": [
+    {
+      "title": "Yerba Mates are everywhere",
+      "image": "article8.png",
+      "publisher": "MustangNews"
+    },
+    {
+      "title": "SLO CAL Pismo Beach",
+      "image": "article9.png",
+      "publisher": "MustangNews"
+    }
+  ],
+  "Breaking": []
+}
