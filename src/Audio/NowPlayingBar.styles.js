@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MdMic } from "react-icons/md";
 
 export const NowPlayingContainer = styled.div`
   position: fixed;
@@ -10,7 +11,7 @@ export const NowPlayingContainer = styled.div`
   margin: 0 auto;
   border-radius: 12px;
   z-index: 1000;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   backdrop-filter: blur(8px);
   margin-bottom: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -43,17 +44,19 @@ export const Title = styled.div`
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.3px;
+  transition: opacity 0.3s ease;
 `;
 
 export const ProgressBar = styled.div`
   width: calc(100% - 24px);
   height: 3px;
-  background: rgba(0, 0, 0, 0.25); // More visible unfilled state
+  background: rgba(0, 0, 0, 0.25);
   position: absolute;
   bottom: 0;
   left: 12px;
   border-radius: 0 0 12px 12px;
   overflow: hidden;
+  transition: opacity 0.3s ease;
 `;
 
 export const ProgressFill = styled.div`
@@ -83,14 +86,15 @@ export const ControlButton = styled.button`
   background: none;
   border: none;
   padding: 8px;
-  color: var(--text-secondary);
+  color: ${(props) =>
+    props.children.type === MdMic ? "var(--primary)" : "var(--text-secondary)"};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
   border-radius: 50%;
-  opacity: ${(props) => (props.disabled ? 0.5 : 0.6)};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   position: relative;
   z-index: 2;
 
@@ -125,4 +129,14 @@ export const CloseButton = styled(ControlButton)`
   &:active:not(:disabled) {
     transform: scale(0.95);
   }
+`;
+
+export const TimeStamp = styled.div`
+  position: absolute;
+  bottom: 4px;
+  left: 14px;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  transition: opacity 0.3s ease;
 `;

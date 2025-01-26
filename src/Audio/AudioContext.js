@@ -10,9 +10,11 @@ export function AudioProvider({ children }) {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(new Audio(podcastAudio));
 
-  // Set up audio event listeners
   React.useEffect(() => {
     const audio = audioRef.current;
+    audio.volume = 1;
+    audio.preload = "auto";
+    audio.load();
 
     const handleTimeUpdate = () => {
       setProgress(audio.currentTime);
@@ -22,12 +24,19 @@ export function AudioProvider({ children }) {
       setDuration(audio.duration);
     };
 
+    const handleError = (e) => {
+      console.error("Audio error:", e);
+    };
+
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("error", handleError);
+      audio.pause();
     };
   }, []);
 

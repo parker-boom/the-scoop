@@ -7,6 +7,7 @@ import { AudioProvider } from "./Audio/AudioContext";
 import NowPlayingBar from "./Audio/NowPlayingBar";
 import { PreferencesProvider } from "./Shared/PreferencesContext.js";
 import ArticlePopUp from "./Shared/articlePopUp";
+import { ResponseAudioProvider } from "./Audio/ResponseAudioContext";
 
 import Home from "./Home/home.js";
 import Onboarding from "./Onboarding/onboarding.js";
@@ -84,29 +85,31 @@ function App() {
   return (
     <PreferencesProvider>
       <AudioProvider>
-        <PopupContext.Provider value={{ setPopupArticle }}>
-          <AppContainer>
-            <PhoneContainer>
-              <Header />
-              <ContentContainer>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/podcast" element={<Podcast />} />
-                  <Route path="/games" element={<Games />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
-              </ContentContainer>
-              <NowPlayingBar />
-              <TabBar />
-              {popupArticle && (
-                <ArticlePopUp
-                  article={popupArticle}
-                  onClose={() => setPopupArticle(null)}
-                />
-              )}
-            </PhoneContainer>
-          </AppContainer>
-        </PopupContext.Provider>
+        <ResponseAudioProvider>
+          <PopupContext.Provider value={{ setPopupArticle }}>
+            <AppContainer>
+              <PhoneContainer>
+                <Header />
+                <ContentContainer>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/podcast" element={<Podcast />} />
+                    <Route path="/games" element={<Games />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </ContentContainer>
+                <NowPlayingBar />
+                <TabBar />
+                {popupArticle && (
+                  <ArticlePopUp
+                    article={popupArticle}
+                    onClose={() => setPopupArticle(null)}
+                  />
+                )}
+              </PhoneContainer>
+            </AppContainer>
+          </PopupContext.Provider>
+        </ResponseAudioProvider>
       </AudioProvider>
     </PreferencesProvider>
   );
